@@ -23,7 +23,7 @@ matrix=['armbian/bananapim2zero', 'armbian/orangepi3lts', 'armbian/orangepi4lts'
 
 
 
-IFS='/' read -r -a array <<< "raspberry/rpi64-ks"
+IFS='/' read -r -a array <<< "raspberry/rpi64-ks-mk3"
 TYPE=${array[0]}
 SBC=${array[1]}
 
@@ -76,11 +76,11 @@ sudo modprobe loop && sudo bash -x ./build_dist
 
 
 #create a filename tat start wirh current date and time add gab-os-mod to the end 
-TARGGET_FILENAME=$(date +"%Y-%m-%d-%H-%M-%S")-gab-os-mod.img
+TARGGET_FILENAME=$(date +"%Y-%m-%d-%H-%M-%S")-gab-os-mod
 
-cp ~/GAB-OS/src/workspace/2023-05-03-raspios-bullseye-arm64-lite.img ~/GAB-OS-MOD/TARGGET_FILENAME
-cp ~/GAB-OS/src/build.log ~/GAB-OS-MOD/build.log
-
+cp ~/GAB-OS/src/workspace/2023-05-03-raspios-bullseye-arm64-lite.img ~/GAB-OS-MOD/{$TARGGET_FILENAME}.img
+cp ~/GAB-OS/src/build.log ~/GAB-OS-MOD/{$TARGGET_FILENAME}.log
+./clean.sh
 # #remove CustomPiOS folder and GAB-OS folder
 # sudo rm -rf ~/CustomPiOS
 # sudo rm -rf ~/GAB-OS
