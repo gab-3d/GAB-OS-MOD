@@ -44,4 +44,4 @@ echo_green "Installing MK3 ... DONE!"
 
 
 # pause the script until the user presses enter
-read -p "Press [Enter] key to continue..."
+#read -p "Press [Enter] key to continue..."
