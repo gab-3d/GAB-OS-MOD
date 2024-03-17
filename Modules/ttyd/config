@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#### KIAUH Install Module
+####
+#### Written by Stephan Wendel aka KwadFan <me@stephanwe.de>
+#### Copyright 2022 - till today
+#### https://github.com/mainsail-crew/MainsailOS
+####
+#### This File is distributed under GPLv3
+####
+
+#### All Credits to th33xitus for his great tool
+#### https://github.com/th33xitus/kiauh
+
+# shellcheck disable=all
+
+# KIAUH repo
+[[ -n "$TTYD_REPO_SHIP" ]] || TTYD_REPO_SHIP="https://github.com/tsl0922/ttyd"
+[[ -n "$TTYD_REPO_BRANCH" ]] || TTYD_REPO_BRANCH="main"
+
+[ -n "$TTYD_DEPS" ] || TTYD_DEPS="build-essential cmake git libjson-c-dev libwebsockets-dev git tmux"
+
+TTYD_LOGIN_VAR='
+session_name="gabos3d"
+
+# 1. First you check if a tmux session exists with a given name.
+tmux has-session -t=$session_name 2> /dev/null
+
+# 2. Create the session if it doesn'\''t exists.
+if [[ $? -ne 0 ]]; then
+ TMUX='\'\'' tmux new-session -d -s "$session_name"
+fi
+
+# 3. Attach if outside of tmux, switch if you'\''re in tmux.
+if [[ -z "$TMUX" ]]; then
+ tmux attach -t "$session_name"
+else
+ tmux switch-client -t "$session_name"
+fi'

@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+#### TTYD Install Module
+####
+#### Written by GAB3D
+#### Copyright 2024 - till today
+####
+#### This File is distributed under GPLv3
+####
+
+#### All Credits to th33xitus for his great tool
+#### https://github.com/dz0ny/klipper-prusa-mk3s.git
+
+# shellcheck enable=requires-variable-braces
+
+# Error handling
+set -Ee
+
+# shellcheck disable=SC1091
+source /common.sh
+install_cleanup_trap
+
+
+echo_green "Installing MK3 ..."
+
+# ## Step 1: Force apt update
+# apt-get update --allow-releaseinfo-change
+
+## Step 2: Make sure all needed packages are installed
+echo_green "Installing MK3 Dependencies ..."
+check_install_pkgs ${MK3_DEPS}
+
+echo_green "MK3_CONFIG_DIR: ${MK3_CONFIG_DIR}"
+
+## check if each part of the directory exists and create it if not /printer_data/config/klipper-prusa-mk3s
+if [[ ! -d "${MK3_CONFIG_DIR}" ]]; then
+    sudo -u "${BASE_USER}" mkdir -p "${MK3_CONFIG_DIR}"
+fi
+
+## Step 3: Move to Home Dir as WorkingDirectoy
+pushd "/home/${BASE_USER}" &> /dev/null || exit 1
+
+## Step 4: clone KIAUH repo
+echo_green "Clone MK3 repository ..."
+gitclone MK3_REPO "${MK3_CONFIG_DIR}/klipper-prusa-mk3s"
+popd &> /dev/null || exit 1
+
+#add a multiline text to the end of "/home/${BASE_USER}"/printer_data/config/moonraker.conf
+sudo -u "${BASE_USER}" echo -e "$MK3_TEMPLATE" >> "${MK3_CONFIG_DIR}/moonraker.conf";
+
+sudo -u "${BASE_USER}" echo -e "$MK3_INCLUDE" >> "${MK3_CONFIG_DIR}/lib.cfg";
+
+sudo -u "${BASE_USER}" cp "${MK3_CONFIG_DIR}/klipper-prusa-mk3s/printer.template.cfg" "${MK3_CONFIG_DIR}/printer.cfg"
+
+sudo -u "${BASE_USER}" echo -e "[include lib.cfg]" >> "${MK3_CONFIG_DIR}/printer.cfg";
+
+
+unpack /filesystem/home/pi /home/"${BASE_USER}" "${BASE_USER}"
+
+sudo -u "${BASE_USER}" echo -e "[include blumer.cfg]" >> "${MK3_CONFIG_DIR}/lib.cfg";
+## Finish
+echo_green "Installing MK3 ... DONE!"
+
+
+# pause the script until the user presses enter
+read -p "Press [Enter] key to continue..."

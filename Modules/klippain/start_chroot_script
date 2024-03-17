@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+#### KLIPPAIN Install Module
+####
+#### Written by GAB3D
+#### Copyright 2024 - till today
+####
+#### This File is distributed under GPLv3
+####
+
+#### All Credits to th33xitus for his great tool
+#### https://github.com/th33xitus/kiauh
+
+# shellcheck enable=requires-variable-braces
+
+# Error handling
+set -Ee
+
+# shellcheck disable=SC1091
+source /common.sh
+install_cleanup_trap
+
+
+echo_green "Installing KLIPPAIN ..."
+
+## Step 1: Force apt update
+apt-get update --allow-releaseinfo-change
+
+## Step 2: Make sure all needed packages are installed
+echo_green "Installing KLIPPAIN Dependencies ..."
+check_install_pkgs ${KLIPPAIN_DEPS}
+
+## Step 3: Move to Home Dir as WorkingDirectoy
+pushd "/home/${BASE_USER}" &> /dev/null || exit 1
+
+## Step 4: clone KIAUH repo
+echo_green "Clone KLIPPAIN repository ..."
+gitclone KLIPPAIN_REPO  "${KLIPPAIN_DIR}"
+#popd &> /dev/null || exit 1
+
+## Step 5: Install KLIPPAIN
+echo_green "Install KLIPPAIN ..."
+#pushd "/home/${BASE_USER}/klippain_shaketune" &> /dev/null || exit 1
+#sudo -u "${BASE_USER}" python3 -m venv "${KLIPPAIN_VENV_DIR}"
+
+#wait user input
+read -p "Press enter to continue"
+sudo -u "${BASE_USER}" "${KLIPPAIN_DIR}"/install.sh
+
+# sudo -u "${BASE_USER}" source "${KLIPPAIN_VENV_DIR}/bin/activate"
+# sudo -u "${BASE_USER}" pip install --upgrade pip
+# sudo -u "${BASE_USER}" pip install -r "${KLIPPAIN_DIR}/requirements.txt"
+
+echo_green "Installing klippy Python Dependencies ..."
+#sudo -u "${BASE_USER}" "${KLIPPAIN_VENV_DIR}"/bin/pip install -r "${KLIPPAIN_DIR}"/"${KLIPPAIN_PYENV_REQ}"
+
+## Step 6: Cleanup
+echo_green "Cleanup ..."
+popd &> /dev/null || exit 1
+
+## Finish
+echo_green "Installing KLIPPAIN ... DONE!"

@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+#### KIAUH Install Module
+####
+#### Written by GAB3D
+#### Copyright 2022 - till today
+####
+#### This File is distributed under GPLv3
+####
+
+#### All Credits to th33xitus for his great tool
+#### https://github.com/dz0ny/klipper-prusa-mk3s.git
+
+# shellcheck disable=all
+
+# KIAUH repo
+[[ -n "$MK3_REPO_SHIP" ]] || MK3_REPO_SHIP="https://github.com/dz0ny/klipper-prusa-mk3s.git"
+[[ -n "$MK3_REPO_BRANCH" ]] || MK3_REPO_BRANCH="main"
+[[ -n "$MK3_CONFIG_DIR"  ]] || MK3_CONFIG_DIR="/home/${BASE_USER}/printer_data/config"
+
+[ -n "$MK3_DEPS" ] || MK3_DEPS="git"
+
+
+[[ -n "$MK3_TEMPLATE"    ]] || MK3_TEMPLATE='
+[update_manager prusa]
+type: git_repo
+origin: https://github.com/dz0ny/klipper-prusa-mk3s.git
+path: ~/printer_data/config/klipper-prusa-mk3s
+primary_branch: main
+is_system_service: False
+managed_services: klipper'
+
+[[ -n "$MK3_INCLUDE" ]] || MK3_INCLUDE='
+# [include prusa.cfg]
+'

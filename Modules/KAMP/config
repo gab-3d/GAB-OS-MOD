@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#### KAMP Install Module
+####
+#### Written by GAB3D
+#### Copyright 2022 - till today
+####
+#### This File is distributed under GPLv3
+####
+
+#### All Credits to th33xitus for his great tool
+#### https://github.com/Frix-x/KAMP-shaketune.git
+
+# shellcheck disable=all
+
+# KAMP repo
+[[ -n "$KAMP_REPO_SHIP" ]] || KAMP_REPO_SHIP="https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git"
+[[ -n "$KAMP_REPO_BRANCH" ]] || KAMP_REPO_BRANCH="main"
+[ -n "$KAMP_CONFIG_DIR" ] || KAMP_CONFIG_DIR="/home/${BASE_USER}/printer_data/config"
+
+
+[ -n "$KAMP_TEMPLATE" ] || KAMP_TEMPLATE='
+[update_manager Klipper-Adaptive-Meshing-Purging]
+type: git_repo
+channel: dev
+path: ~/Klipper-Adaptive-Meshing-Purging
+origin: https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+managed_services: klipper
+primary_branch: main'
+
+[ -n "$KAMP_INCLUDE" ] || KAMP_INCLUDE='
+[include KAMP_Settings.cfg]
+'

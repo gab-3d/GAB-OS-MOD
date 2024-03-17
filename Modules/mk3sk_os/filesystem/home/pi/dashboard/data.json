@@ -1,0 +1,21 @@
+[
+    {
+        "title": "Fluidd",
+        "description": "Fluidd is a web-based frontend for klipper.",
+        "port": 81,
+        "path": "/"
+
+    },
+    {
+        "title": "Mainsail",
+        "description": "MainSail is a full featured web-based interface for controlling 3D printers over the network, including remote printing, monitoring and emergency stop.",
+        "port": 82,
+        "path": "/"
+    },
+    {
+        "title": "SSH",
+        "description": "Web shell",
+        "port": 8080,
+        "path": "/"
+    }
+]

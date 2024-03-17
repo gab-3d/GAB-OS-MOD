@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#### KIAUH Install Module
+####
+#### Written by GAB3D
+#### Copyright 2022 - till today
+####
+#### This File is distributed under GPLv3
+####
+
+#### All Credits to th33xitus for his great tool
+#### https://github.com/gab-3d/Gab3d-Klipper-Utilities.git
+
+# shellcheck disable=all
+
+# KIAUH repo
+[[ -n "$GABUTIL_REPO_SHIP" ]] || GABUTIL_REPO_SHIP="https://github.com/gab-3d/Gab3d-Klipper-Utilities.git"
+[[ -n "$GABUTIL_REPO_BRANCH" ]] || GABUTIL_REPO_BRANCH="main"
+[[ -n "$GABUTIL_CONFIG_DIR"  ]] || GABUTIL_CONFIG_DIR="/home/${BASE_USER}/printer_data/config"
+
+[ -n "$GABUTIL_DEPS" ] || GABUTIL_DEPS="python3-numpy python3-matplotlib libatlas-base-dev zip git"
+
+
+[[ -n "$GABUTIL_TEMPLATE"    ]] || GABUTIL_TEMPLATE='
+[update_manager Gab3d-Klipper-Utilities]
+type: git_repo
+channel: beta
+primary_branch: main
+path: ~/Gab3d-Klipper-Utilities
+managed_services:
+    klipper
+    moonraker
+origin: https://github.com/gab-3d/Gab3d-Klipper-Utilities.git
+install_script: install.sh
+'
+
+[[ -n "$GABUTIL_INCLUDE" ]] || GABUTIL_INCLUDE='
+[include gab-3d-utilities.cfg]
+'

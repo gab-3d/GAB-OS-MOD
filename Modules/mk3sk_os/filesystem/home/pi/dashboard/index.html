@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body {
+            background-image: url('gaboslogo.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+         
+        }
+        .box {
+            flex: 0 0 calc(50% - 40px);
+            margin: 10px;
+        }
+        .card-content a {
+            color: #039be5;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+      
+       
+    </div>
+
+
+    <script>
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const dashboard = document.querySelector('.dashboard');
+                data.forEach((box, index) => {
+                    const boxElement = document.createElement('div');
+                    boxElement.className = 'box card';
+                    boxElement.innerHTML = `
+                        <div class="card-content">
+                            <span class="card-title"><a href="#" id="link${index + 1}" target="_blank">${box.title}</a></span>
+                            <p>${box.description}</p>
+                     
+                        </div>
+                    `;
+                    dashboard.appendChild(boxElement);
+                    document.getElementById(`link${index + 1}`).href = window.location.protocol + "//" + window.location.hostname + `:${box.port}`;
+                });
+            });
+    </script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.getElementById('link1').href = window.location.protocol + "//" + window.location.hostname + ":81";
+        document.getElementById('link2').href = window.location.protocol + "//" + window.location.hostname + ":82";
+        document.getElementById('link3').href = window.location.protocol + "//" + window.location.hostname + ":8080";
+    </script>
+</body>
+</html>
