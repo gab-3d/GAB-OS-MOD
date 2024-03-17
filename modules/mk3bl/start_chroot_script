@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+#### TTYD Install Module
+####
+#### Written by GAB3D
+#### Copyright 2024 - till today
+####
+#### This File is distributed under GPLv3
+####
+
+#### All Credits to th33xitus for his great tool
+#### https://github.com/dz0ny/klipper-prusa-mk3s.git
+
+# shellcheck enable=requires-variable-braces
+
+# Error handling
+set -Ee
+
+# shellcheck disable=SC1091
+source /common.sh
+install_cleanup_trap
+
+
+echo_green "Installing MK3 ..."
+
+
+echo_green "MK3_CONFIG"
+
+## check if each part of the directory exists and create it if not /printer_data/config/klipper-prusa-mk3s
+if [[ ! -d "${MK3_CONFIG_DIR}" ]]; then
+    sudo -u "${BASE_USER}" mkdir -p "${MK3_CONFIG_DIR}"
+fi
+
+echo_green "Installing MK3 Dependencies ..."
+check_install_pkgs ${MK3_DEPS}
+gitclone MK3_REPO "${MK3_CONFIG_DIR}/klipper_network_status"
+
+ln -sf "${MK3_CONFIG_DIR}/klipper_network_status/network_status.py" "${KLIPPER_SRC_DIR}/klippy/extras/network_status.py"
+
+unpack /filesystem/home/pi /home/"${BASE_USER}" "${BASE_USER}"
+
+sudo -u "${BASE_USER}" echo -e "$MK3_TEMPLATE" >> "${MK3_CONFIG_DIR}/moonraker.conf";
+
+echo_green "Installing MK3 ... DONE!"
+
+
+# pause the script until the user presses enter
+read -p "Press [Enter] key to continue..."
