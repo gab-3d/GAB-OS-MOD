@@ -1,13 +1,12 @@
+./clean.sh
 cd ~/
+
 git clone https://github.com/gab-3d/GAB-OS.git
 
 cp -r ~/GAB-OS-MOD/modules/* ~/GAB-OS/src/modules/
 cp -r ~/GAB-OS-MOD/config/rpi64-ks-mk3 ~/GAB-OS/config/raspberry/rpi64-ks-mk3
 
-cd ~/GAB-OS/
 
-
-sudo apt update; sudo apt install --yes aria2 coreutils jq p7zip-full qemu-user-static zip
 
 cd ~
 git clone https://github.com/guysoft/CustomPiOS.git
@@ -17,6 +16,8 @@ git branch stable 63da54b86ab566c558e9084568d326413f6585d8
 git switch stable
 
 cd ~/GAB-OS/
+
+sudo apt update; sudo apt install --yes aria2 coreutils jq p7zip-full qemu-user-static zip
 
 matrix=['armbian/bananapim2zero', 'armbian/orangepi3lts', 'armbian/orangepi4lts', 'orangepi/orangepi_zero2', 'raspberry/rpi32', 'raspberry/rpi64', 'raspberry/rpi64-ks']
 
