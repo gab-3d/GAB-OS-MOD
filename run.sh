@@ -1,4 +1,8 @@
+cd ~/
 git clone https://github.com/gab-3d/GAB-OS.git
+
+cp -r ~/GAB-OS-MOD/modules/* ~/GAB-OS/src/modules/
+cp -r ~/GAB-OS-MOD/config/rpi64-ks-mk3 ~/GAB-OS/config/raspberry/rpi64-ks-mk3
 
 cd ~/GAB-OS/
 
@@ -18,7 +22,7 @@ matrix=['armbian/bananapim2zero', 'armbian/orangepi3lts', 'armbian/orangepi4lts'
 
 
 
-IFS='/' read -r -a array <<< "raspberry/rpi64"
+IFS='/' read -r -a array <<< "raspberry/rpi64-ks"
 TYPE=${array[0]}
 SBC=${array[1]}
 
@@ -68,3 +72,14 @@ cd ..
 cd ..
 cd ./src && ../../CustomPiOS/src/update-custompios-paths
 sudo modprobe loop && sudo bash -x ./build_dist
+
+
+#create a filename tat start wirh current date and time add gab-os-mod to the end 
+TARGGET_FILENAME=$(date +"%Y-%m-%d-%H-%M-%S")-gab-os-mod.img
+
+cp ~/GAB-OS/src/workspace/2023-05-03-raspios-bullseye-arm64-lite.img ~/GAB-OS-MOD/TARGGET_FILENAME
+cp ~/GAB-OS/src/build.log ~/GAB-OS-MOD/build.log
+
+# #remove CustomPiOS folder and GAB-OS folder
+# sudo rm -rf ~/CustomPiOS
+# sudo rm -rf ~/GAB-OS
