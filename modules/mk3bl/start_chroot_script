@@ -26,6 +26,8 @@ echo_green "#   Installing MK3BL..  #"
 echo_green "#                       #"
 echo_green "#########################"
 
+echo_green "ooo ${MK3BL_CONFIG_DIR}"
+
 
 ## check if each part of the directory exists and create it if not /printer_data/config/klipper-prusa-mk3s
 if [[ ! -d "${MK3BL_CONFIG_DIR}" ]]; then
