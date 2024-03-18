@@ -84,11 +84,13 @@ CPU_COUNT=12
 echo -e "\e[32mUsing ${CPU_COUNT} Cores for compression...\e[0m"
 sudo xz -efkvz9T"${CPU_COUNT}" '2023-05-03-raspios-bullseye-arm64-lite.img' || true
 
+
 cp ~/GAB-OS/src/workspace/2023-05-03-raspios-bullseye-arm64-lite.img.xz ~/GAB-OS-MOD/{$TARGGET_FILENAME}.img.xz
 cp ~/GAB-OS/src/build.log ~/GAB-OS-MOD/{$TARGGET_FILENAME}.log
 
 cd ~/GAB-OS-MOD/
 #./clean.sh
+
 
 
 # display elapsed time in human readable format from $StartDate
