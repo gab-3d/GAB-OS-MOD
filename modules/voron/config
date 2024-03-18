@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#### Voron Install Module
+####
+#### Written by Stephan Wendel aka KwadFan <me@stephanwe.de>
+#### Copyright 2022 - till today
+#### https://github.com/mainsail-crew/MainsailOS
+####
+#### This File is distributed under GPLv3
+####
+
+#### All Credits to th33xitus for his great tool
+#### https://github.com/th33xitus/kiauh
+
+# shellcheck disable=all
+
+

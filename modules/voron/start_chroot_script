@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#### KIAUH Install Module
+####
+#### Written by Stephan Wendel aka KwadFan <me@stephanwe.de>
+#### Copyright 2022 - till today
+####
+#### This File is distributed under GPLv3
+####
+
+#### All Credits to th33xitus for his great tool
+#### https://github.com/th33xitus/kiauh
+
+# shellcheck enable=requires-variable-braces
+
+# Error handling
+set -Ee
+
+# shellcheck disable=SC1091
+source /common.sh
+install_cleanup_trap
+
+
+echo_green "Installing Voron ..."
+
+echo_green "Installing Voron ... DONE!"

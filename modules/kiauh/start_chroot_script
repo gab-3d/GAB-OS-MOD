@@ -41,5 +41,7 @@ if [[ ${KIAUH_ADD_TO_PATH} = "1" ]]; then
     sudo ln -s "/home/${BASE_USER}/kiauh/kiauh.sh" "/usr/local/bin/kiauh"
 fi
 
+ln -sf "/home/${BASE_USER}/kiauh/resources/gcode_shell_command.py" "/home/${BASE_USER}/klipper/klippy/extras/gcode_shell_command.py"
+
 ## Finish
 echo_green "Installing KIAUH ... DONE!"

@@ -5,7 +5,7 @@ cd ~/
 git clone https://github.com/gab-3d/GAB-OS.git
 
 cp -r ~/GAB-OS-MOD/modules/* ~/GAB-OS/src/modules/
-cp -r ~/GAB-OS-MOD/config/rpi64-ks-mk3 ~/GAB-OS/config/raspberry/rpi64-ks-mk3
+cp -r ~/GAB-OS-MOD/config/* ~/GAB-OS/config/raspberry/
 
 
 
@@ -24,7 +24,7 @@ matrix=['armbian/bananapim2zero', 'armbian/orangepi3lts', 'armbian/orangepi4lts'
 
 
 
-IFS='/' read -r -a array <<< "raspberry/rpi64-ks-mk3"
+IFS='/' read -r -a array <<< "raspberry/rpi64-ks-voron"
 TYPE=${array[0]}
 SBC=${array[1]}
 
