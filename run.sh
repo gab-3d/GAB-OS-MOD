@@ -85,8 +85,8 @@ echo -e "\e[32mUsing ${CPU_COUNT} Cores for compression...\e[0m"
 sudo xz -efkvz9T"${CPU_COUNT}" '2023-05-03-raspios-bullseye-arm64-lite.img' || true
 
 
-cp ~/GAB-OS/src/workspace/2023-05-03-raspios-bullseye-arm64-lite.img.xz ~/GAB-OS-MOD/{$TARGGET_FILENAME}.img.xz
-cp ~/GAB-OS/src/build.log ~/GAB-OS-MOD/{$TARGGET_FILENAME}.log
+cp ~/GAB-OS/src/workspace/2023-05-03-raspios-bullseye-arm64-lite.img.xz ~/GAB-OS-MOD/$TARGGET_FILENAME.img.xz
+cp ~/GAB-OS/src/build.log ~/GAB-OS-MOD/$TARGGET_FILENAME.log
 
 cd ~/GAB-OS-MOD/
 #./clean.sh
@@ -96,7 +96,6 @@ cd ~/GAB-OS-MOD/
 # display elapsed time in human readable format from $StartDate
 echo -e "\e[32m==========================\e[0m"
 echo -e "\e[32mBUILD END @ $(date)! \e[0m"
-echo -e "\e[32mElapsed Time: $(date -u -d "0 $(date +%s) seconds - $(date -d "$StartDate" +%s) seconds" +"%H:%M:%S")\e[0m"
 echo -e "\e[32m==========================\e[0m"
 
 

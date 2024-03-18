@@ -46,6 +46,7 @@ sudo -u "${BASE_USER}" echo -e "$MK3BL_TEMPLATE" >> "${MK3BL_CONFIG_DIR}/moonrak
 
 echo_green "Installing MK3 ... DONE!"
 
+tree -i /home/"${BASE_USER}"
 
 # pause the script until the user presses enter
 #read -p "Press [Enter] key to continue..."
