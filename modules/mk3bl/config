@@ -27,4 +27,3 @@ type: git_repo
 path: /home/pi/klipper_network_status
 origin: https://github.com/JeremyRuhland/klipper_network_status
 install_script: install.sh'
-
