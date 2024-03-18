@@ -91,6 +91,11 @@ cd ~/GAB-OS-MOD/
 #./clean.sh
 
 
+# display elapsed time in human readable format from $StartDate
+echo -e "\e[32m==========================\e[0m"
+echo -e "\e[32mBUILD END @ $(date)! \e[0m"
+echo -e "\e[32mElapsed Time: $(date -u -d "0 $(date +%s) seconds - $(date -d "$StartDate" +%s) seconds" +"%H:%M:%S")\e[0m"
+echo -e "\e[32m==========================\e[0m"
 
 
 # #remove CustomPiOS folder and GAB-OS folder
