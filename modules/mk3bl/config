@@ -13,18 +13,17 @@
 # shellcheck disable=all
 
 # KIAUH repo
-[[ -n "$MK3_REPO_SHIP" ]] || MK3_REPO_SHIP="https://github.com/JeremyRuhland/klipper_network_status"
-[[ -n "$MK3_REPO_BRANCH" ]] || MK3_REPO_BRANCH="master"
-[[ -n "$MK3_CONFIG_DIR"  ]] || MK3_CONFIG_DIR="/home/${BASE_USER}/printer_data/config"
-[ -n "$KLIPPER_SRC_DIR" ] || KLIPPER_SRC_DIR="/home/${BASE_USER}/klipper"
+[[ -n "$MK3BL_REPO_SHIP" ]] || MK3BL_REPO_SHIP="https://github.com/JeremyRuhland/klipper_network_status"
+[[ -n "$MK3BL_REPO_BRANCH" ]] || MK3BL_REPO_BRANCH="master"
+[[ -n "$MK3BL_CONFIG_DIR"  ]] || MK3BL_CONFIG_DIR="/home/${BASE_USER}/printer_data/config"
+[[ -n "$KLIPPER_SRC_DIR" ]] || KLIPPER_SRC_DIR="/home/${BASE_USER}/klipper"
 
-[ -n "$MK3_DEPS" ] || MK3_DEPS="git"
+[[ -n "$MK3BL_DEPS" ]] || MK3BL_DEPS="git"
 
 
-[[ -n "$MK3_TEMPLATE"    ]] || MK3_TEMPLATE='
+[[ -n "$MK3BL_TEMPLATE"    ]] || MK3BL_TEMPLATE='
 [update_manager client klipper_network_status]
 type: git_repo
 path: /home/pi/klipper_network_status
 origin: https://github.com/JeremyRuhland/klipper_network_status
 install_script: install.sh'
-
