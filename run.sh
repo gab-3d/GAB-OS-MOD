@@ -91,6 +91,9 @@ sudo xz -efkvz9T"${CPU_COUNT}" '2023-05-03-raspios-bullseye-arm64-lite.img' || t
 
 cp ~/GAB-OS/src/workspace/2023-05-03-raspios-bullseye-arm64-lite.img.xz ~/GAB-OS-MOD/$TARGGET_FILENAME.img.xz
 cp ~/GAB-OS/src/build.log ~/GAB-OS-MOD/$TARGGET_FILENAME.log
+
+cd ~/GAB-OS/
+
 ./clean.sh
 
 
