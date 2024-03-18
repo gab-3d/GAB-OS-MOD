@@ -1,4 +1,4 @@
-cd ~/GAB-OS-MOD/
+
 ./clean.sh
 cd ~/
 
