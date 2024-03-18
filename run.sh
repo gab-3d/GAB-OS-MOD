@@ -77,7 +77,7 @@ sudo modprobe loop && sudo bash -x ./build_dist
 
 
 #create a filename tat start wirh current date and time add gab-os-mod to the end 
-TARGGET_FILENAME=$(date +"%Y-%m-%d-%H-%M-%S")-gab-os-mod
+TARGGET_FILENAME=$(date +"%Y-%m-%d-%H-%M-%S-gab-os-")$SBC
 
 cd ~/GAB-OS/src/workspace/
 CPU_COUNT=12
