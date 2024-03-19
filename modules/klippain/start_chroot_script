@@ -39,13 +39,13 @@ gitclone KLIPPAIN_REPO  "${KLIPPAIN_DIR}"
 
 ## Step 5: Install KLIPPAIN
 echo_green "Install KLIPPAIN ..."
-#pushd "/home/${BASE_USER}/klippain_shaketune" &> /dev/null || exit 1
+pushd "/home/${BASE_USER}/klippain_shaketune" &> /dev/null || exit 1
 #sudo -u "${BASE_USER}" python3 -m venv "${KLIPPAIN_VENV_DIR}"
 
 #wait user input
 read -p "Press enter to continue"
 sudo -u "${BASE_USER}" "${KLIPPAIN_DIR}"/install.sh
-
+read -p "Press enter to continue"
 # sudo -u "${BASE_USER}" source "${KLIPPAIN_VENV_DIR}/bin/activate"
 # sudo -u "${BASE_USER}" pip install --upgrade pip
 # sudo -u "${BASE_USER}" pip install -r "${KLIPPAIN_DIR}/requirements.txt"
