@@ -25,8 +25,6 @@ echo_green "* Installing KAMP ...                  *"
 echo_green "****************************************"
 
 
-
-
 ## Step 3: Move to Home Dir as WorkingDirectoy
 pushd "/home/${BASE_USER}" &> /dev/null || exit 1
 

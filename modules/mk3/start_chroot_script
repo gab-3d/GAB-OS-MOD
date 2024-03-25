@@ -22,7 +22,8 @@ install_cleanup_trap
 
 echo_green "****************************************"
 echo_green "* Installing MK3 ...                   *"
-echo_green "****************************************"# ## Step 1: Force apt update
+echo_green "****************************************"
+## Step 1: Force apt update
 # apt-get update --allow-releaseinfo-change
 
 ## Step 2: Make sure all needed packages are installed

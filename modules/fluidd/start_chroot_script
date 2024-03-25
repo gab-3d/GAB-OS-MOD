@@ -15,6 +15,10 @@ set -e
 source /common.sh
 install_cleanup_trap
 
+echo_green "****************************************"
+echo_green "* Installing FLUIDD ...                *"
+echo_green "****************************************"
+
 unpack /filesystem/home/pi /home/pi pi
 
 echo "Installing Fluidd"
@@ -40,3 +44,7 @@ ln -s /var/log/nginx/fluidd-error.log /home/"${BASE_USER}"/printer_data/logs/
 
 # Unpack root at the end, so files are modified before
 unpack /filesystem/root / "${BASE_USER}"
+
+echo_green "****************************************"
+echo_green "* FLUIDD DONE                          *"
+echo_green "****************************************"

@@ -9,12 +9,16 @@
 # Source error handling, leave this in place
 set -x
 set -e
+
+
+source /common.sh
+install_cleanup_trap
+
 echo_green "****************************************"
 echo_green "* Installing DASHBOARD ...             *"
 echo_green "****************************************"
 
-source /common.sh
-install_cleanup_trap
+
 check_install_pkgs ${DASHBOARD_DEPS}
 
 unpack /filesystem/home/pi /home/"${BASE_USER}" "${BASE_USER}"

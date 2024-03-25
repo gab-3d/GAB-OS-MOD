@@ -20,11 +20,9 @@ source /common.sh
 install_cleanup_trap
 
 
-echo_green "#########################"
-echo_green "#                       #"
-echo_green "#   Installing ttyd...  #"
-echo_green "#                       #"
-echo_green "#########################"
+echo_green "****************************************"
+echo_green "* Installing TTYD ...                  *"
+echo_green "****************************************"
 
 ## Step 1: Force apt update
 apt-get update --allow-releaseinfo-change
@@ -72,8 +70,8 @@ unset TTYD_LOGIN_VAR
 ## Finish
 echo_green "Installing TTYD ... DONE!"
 
-echo_green "========================="
-echo_green "#      Done ttyd...     #"
-echo_green "========================="
+echo_green "****************************************"
+echo_green "* TTYD DONE                            *"
+echo_green "****************************************"
 
 

@@ -15,14 +15,14 @@
 # Error handling
 set -Ee
 
-echo_green "****************************************"
-echo_green "* Installing KIAUH ...                 *"
-echo_green "****************************************"
 
 # shellcheck disable=SC1091
 source /common.sh
 install_cleanup_trap
 
+echo_green "****************************************"
+echo_green "* Installing KIAUH ...                 *"
+echo_green "****************************************"
 
 
 ## Step 1: Force apt update
