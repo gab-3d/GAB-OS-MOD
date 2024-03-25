@@ -92,14 +92,15 @@ git branch stable 63da54b86ab566c558e9084568d326413f6585d8
 git switch stable
 
 imageToGenerate=("raspberry/rpi64-base" "raspberry/rpi64-ks-voron" "raspberry/rpi64-ks-mk3")
-imageToGenerate=("raspberry/rpi64-base")
+#imageToGenerate=("raspberry/rpi64-base")
 
 for image in "${imageToGenerate[@]}"
 do
     generateImage "$image"
     sudo rm -rf ~/GAB-OS/src/workspace/*
 done
-
-
+# sudo umount /home/gab-os/GAB-OS/src/workspace/mount/dev/pts
+# sudo umount /home/gab-os/GAB-OS/src/workspace/mount/boot
+# sudo umount /home/gab-os/GAB-OS/src/workspace/mount
 #generateImage "raspberry/rpi64-ks-voron"
 

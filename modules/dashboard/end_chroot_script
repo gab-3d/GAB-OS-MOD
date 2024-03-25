@@ -12,3 +12,6 @@ set -e
 # find this string "listen 80 default_server;" and replace with "listen 82 default_server;" in file pippo
 #sed -i 's/listen 80 default_server;/listen 82 default_server;/g' /filesystem/home/root/etc/nginx/sites-available/mainsail
 
+echo_green "****************************************"
+echo_green "* DASHBOARD DONE                       *"
+echo_green "****************************************"

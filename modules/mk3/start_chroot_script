@@ -20,9 +20,9 @@ source /common.sh
 install_cleanup_trap
 
 
-echo_green "Installing MK3 ..."
-
-# ## Step 1: Force apt update
+echo_green "****************************************"
+echo_green "* Installing MK3 ...                   *"
+echo_green "****************************************"# ## Step 1: Force apt update
 # apt-get update --allow-releaseinfo-change
 
 ## Step 2: Make sure all needed packages are installed
@@ -62,4 +62,6 @@ echo_green "Installing MK3 ... DONE!"
 
 
 # pause the script until the user presses enter
-read -p "Press [Enter] key to continue..."
+echo_green "****************************************"
+echo_green "* MK3 DONE                             *"
+echo_green "****************************************"

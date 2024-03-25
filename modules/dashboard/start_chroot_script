@@ -9,10 +9,12 @@
 # Source error handling, leave this in place
 set -x
 set -e
+echo_green "****************************************"
+echo_green "* Installing DASHBOARD ...             *"
+echo_green "****************************************"
 
 source /common.sh
 install_cleanup_trap
-echo_green "Installing DASHBOARD Dependencies ..."
 check_install_pkgs ${DASHBOARD_DEPS}
 
 unpack /filesystem/home/pi /home/"${BASE_USER}" "${BASE_USER}"
@@ -25,15 +27,17 @@ apt install nginx -y
 echo "This is an example module, install and set up what you need here!"
 echo_green "$MK3SK_OS_VAR"
 
+
+sudo -u "${BASE_USER}" echo -e "$DASHBOARD_TEMPLATE" >> "${DASHBOARD_CONFIG_DIR}/moonraker.conf";
+
 # make /home/${BASE_USER}/finish.sh executable
 #chmod +x /home/"${BASE_USER}"/klippain.sh
 
 gitclone DASHBOARD_REPO "/home/${BASE_USER}/GAB-OS-HP"
 
-ln -s /home/"${BASE_USER}/GAB-OS-HP/menu/menu.sh" /home/"${BASE_USER}/menu
+ln -s /home/"${BASE_USER}/GAB-OS-HP/menu/menu.sh" /home/"${BASE_USER}/menu"
 
 ln -s /etc/nginx/sites-available/dashboard /etc/nginx/sites-enabled/
 # Unpack root at the end, so files are modified before
 unpack /filesystem/root /
 
-sudo -u "${BASE_USER}" echo -e "$DASHBOARD_TEMPLATE" >> "${DASHBOARD_CONFIG_DIR}/moonraker.conf";

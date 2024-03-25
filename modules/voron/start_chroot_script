@@ -21,6 +21,12 @@ install_cleanup_trap
 
 unpack /filesystem/home/pi /home/"${BASE_USER}" "${BASE_USER}"
 
-echo_green "Installing Voron ..."
+echo_green "****************************************"
+echo_green "* Installing Voron ...                 *"
+echo_green "****************************************"
 
-echo_green "Installing Voron ... DONE!"
+echo "export GABOSVER=VORON" >> /etc/profile
+
+echo_green "****************************************"
+echo_green "* Voron DONE                           *"
+echo_green "****************************************"

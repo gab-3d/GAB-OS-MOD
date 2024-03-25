@@ -20,7 +20,9 @@ source /common.sh
 install_cleanup_trap
 
 
-echo_green "Installing KAMP ..."
+echo_green "****************************************"
+echo_green "* Installing KAMP ...                  *"
+echo_green "****************************************"
 
 
 
@@ -29,7 +31,7 @@ echo_green "Installing KAMP ..."
 pushd "/home/${BASE_USER}" &> /dev/null || exit 1
 
 ## Step 4: clone KAMP repo
-echo_green "Clone KAMP repository ..."
+
 gitclone KAMP_REPO Klipper-Adaptive-Meshing-Purging
 
 
@@ -49,4 +51,6 @@ if [[ -f "${KAMP_TEMPLATE}" ]]; then
 fi
 
 ## Finish
-echo_green "Installing KAMP ... DONE!"
+echo_green "****************************************"
+echo_green "* KAMP DONE                            *"
+echo_green "****************************************"

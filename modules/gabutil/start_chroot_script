@@ -15,18 +15,21 @@
 # Error handling
 set -Ee
 
+echo_green "****************************************"
+echo_green "* Installing GABUTIL ...               *"
+echo_green "****************************************"
+
 # shellcheck disable=SC1091
 source /common.sh
 install_cleanup_trap
 
 
-echo_green "Installing GABUTIL ..."
 
 # ## Step 1: Force apt update
 apt-get update --allow-releaseinfo-change
 
 ## Step 2: Make sure all needed packages are installed
-echo_green "Installing GABUTIL Dependencies ..."
+
 check_install_pkgs ${GABUTIL_DEPS}
 
 
@@ -54,6 +57,8 @@ sudo -u "${BASE_USER}" echo -e "$GABUTIL_INCLUDE" >> "${GABUTIL_CONFIG_DIR}/lib.
 
 ln -s "/home/${BASE_USER}/Gab3d-Klipper-Utilities/gab-3d-utilities.cfg" "/home/${BASE_USER}/printer_data/config/gab-3d-utilities.cfg"
 ## Finish
-echo_green "Installing GABUTIL ... DONE!"
 
+echo_green "****************************************"
+echo_green "* GABUTIL DONE                         *"
+echo_green "****************************************"
 

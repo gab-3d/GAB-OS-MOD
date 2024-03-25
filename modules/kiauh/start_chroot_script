@@ -15,12 +15,15 @@
 # Error handling
 set -Ee
 
+echo_green "****************************************"
+echo_green "* Installing KIAUH ...                 *"
+echo_green "****************************************"
+
 # shellcheck disable=SC1091
 source /common.sh
 install_cleanup_trap
 
 
-echo_green "Installing Kiauh ..."
 
 ## Step 1: Force apt update
 apt-get update --allow-releaseinfo-change
@@ -32,7 +35,6 @@ check_install_pkgs git
 pushd "/home/${BASE_USER}" &> /dev/null || exit 1
 
 ## Step 4: clone KIAUH repo
-echo_green "Clone KIAUH repository ..."
 gitclone KIAUH_REPO kiauh
 
 ## Step 5: Link kiauh.sh in /usr/local/bin as kiauh
@@ -44,4 +46,6 @@ fi
 ln -sf "/home/${BASE_USER}/kiauh/resources/gcode_shell_command.py" "/home/${BASE_USER}/klipper/klippy/extras/gcode_shell_command.py"
 
 ## Finish
-echo_green "Installing KIAUH ... DONE!"
+echo_green "****************************************"
+echo_green "* KIAUH DONE                           *"
+echo_green "****************************************"
