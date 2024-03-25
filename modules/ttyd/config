@@ -27,7 +27,7 @@ tmux has-session -t=$session_name 2> /dev/null
 
 # 2. Create the session if it doesn'\''t exists.
 if [[ $? -ne 0 ]]; then
- TMUX='\'\'' tmux new-session -d -s "$session_name"
+ TMUX='\'\'' tmux new-session -d -s "$session_name" ~/GAB-OS-HP/menu/menu.sh
 fi
 
 # 3. Attach if outside of tmux, switch if you'\''re in tmux.

@@ -13,9 +13,6 @@ type: git_repo
 channel: beta
 primary_branch: main
 path: ~/GAB-OS-HP
-managed_services:
-    klipper
-    moonraker
 origin: https://github.com/gab-3d/GAB-OS-HP.git
-install_script: install.sh
+
 '
