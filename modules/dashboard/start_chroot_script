@@ -12,6 +12,8 @@ set -e
 
 source /common.sh
 install_cleanup_trap
+echo_green "Installing DASHBOARD Dependencies ..."
+check_install_pkgs ${DASHBOARD_DEPS}
 
 unpack /filesystem/home/pi /home/"${BASE_USER}" "${BASE_USER}"
 unpack /filesystem/home/root /root root
@@ -28,7 +30,8 @@ echo_green "$MK3SK_OS_VAR"
 
 gitclone DASHBOARD_REPO "/home/${BASE_USER}/GAB-OS-HP"
 
+ln -s /home/"${BASE_USER}/GAB-OS-HP/menu/menu.sh" /home/"${BASE_USER}/menu
 
-ln -s "/home/${BASE_USER}/GAB-OS-HP/dashboard" /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/dashboard /etc/nginx/sites-enabled/
 # Unpack root at the end, so files are modified before
 unpack /filesystem/root /

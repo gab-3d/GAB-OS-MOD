@@ -70,7 +70,7 @@ generateImage() {
         # Rest of the code goes here
 }
 
-sudo apt update; sudo apt install --yes aria2 coreutils jq p7zip-full qemu-user-static zip
+sudo apt update; sudo apt install --yes aria2 coreutils jq p7zip-full qemu-user-static zip dialog
 
 cd ~/GAB-OS-MOD/
 ./clean.sh
@@ -92,6 +92,7 @@ git branch stable 63da54b86ab566c558e9084568d326413f6585d8
 git switch stable
 
 imageToGenerate=("raspberry/rpi64-base" "raspberry/rpi64-ks-voron" "raspberry/rpi64-ks-mk3")
+imageToGenerate=("raspberry/rpi64-base")
 
 for image in "${imageToGenerate[@]}"
 do

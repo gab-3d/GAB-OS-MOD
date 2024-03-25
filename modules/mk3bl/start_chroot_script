@@ -49,3 +49,7 @@ echo "$( ls -Rlah "/home/${BASE_USER}")"
 
 # pause the script until the user presses enter
 #read -p "Press [Enter] key to continue..."
+
+#Add GABOSVER="MK3BL" to system environment variables
+
+echo "export GABOSVER=MK3BL" >> /etc/profile

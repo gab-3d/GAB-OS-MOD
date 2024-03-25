@@ -2,4 +2,6 @@
 #### 
 
 
-[[ -n "$DASHBOARD_REPO" ]] || DASHBOARD_REPO="https://github.com/gab-3d/GAB-OS-HP.git"
+[[ -n "$DASHBOARD_REPO_SHIP" ]] || DASHBOARD_REPO_SHIP="https://github.com/gab-3d/GAB-OS-HP.git"
+[[ -n "$DASHBOARD_REPO_BRANCH" ]] || DASHBOARD_REPO_BRANCH="main"
+[[ -n "$DASHBOARD_DEPS" ]] || DASHBOARD_DEPS="dialog git"
