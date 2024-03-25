@@ -5,3 +5,17 @@
 [[ -n "$DASHBOARD_REPO_SHIP" ]] || DASHBOARD_REPO_SHIP="https://github.com/gab-3d/GAB-OS-HP.git"
 [[ -n "$DASHBOARD_REPO_BRANCH" ]] || DASHBOARD_REPO_BRANCH="main"
 [[ -n "$DASHBOARD_DEPS" ]] || DASHBOARD_DEPS="dialog git"
+
+[[ -n "$DASHBOARD_CONFIG_DIR"  ]] || DASHBOARD_CONFIG_DIR="/home/${BASE_USER}/printer_data/config"
+[[ -n "$DASHBOARD_TEMPLATE"    ]] || DASHBOARD_TEMPLATE='
+[update_manager Gab3d-DashBoard]
+type: git_repo
+channel: beta
+primary_branch: main
+path: ~/GAB-OS-HP
+managed_services:
+    klipper
+    moonraker
+origin: https://github.com/gab-3d/GAB-OS-HP.git
+install_script: install.sh
+'

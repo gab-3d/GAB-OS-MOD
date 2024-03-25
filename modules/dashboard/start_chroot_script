@@ -35,3 +35,5 @@ ln -s /home/"${BASE_USER}/GAB-OS-HP/menu/menu.sh" /home/"${BASE_USER}/menu
 ln -s /etc/nginx/sites-available/dashboard /etc/nginx/sites-enabled/
 # Unpack root at the end, so files are modified before
 unpack /filesystem/root /
+
+sudo -u "${BASE_USER}" echo -e "$DASHBOARD_TEMPLATE" >> "${DASHBOARD_CONFIG_DIR}/moonraker.conf";
