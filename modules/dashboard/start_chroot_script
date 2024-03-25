@@ -24,8 +24,11 @@ echo "This is an example module, install and set up what you need here!"
 echo_green "$MK3SK_OS_VAR"
 
 # make /home/${BASE_USER}/finish.sh executable
-chmod +x /home/"${BASE_USER}"/klippain.sh
+#chmod +x /home/"${BASE_USER}"/klippain.sh
 
-ln -s /etc/nginx/sites-available/dashboard /etc/nginx/sites-enabled/
+gitclone DASHBOARD_REPO "/home/${BASE_USER}/GAB-OS-HP"
+
+
+ln -s "/home/${BASE_USER}/GAB-OS-HP/dashboard" /etc/nginx/sites-enabled/
 # Unpack root at the end, so files are modified before
 unpack /filesystem/root /

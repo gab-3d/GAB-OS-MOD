@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
 #### 
+
+
+[[ -n "$DASHBOARD_REPO" ]] || DASHBOARD_REPO="https://github.com/gab-3d/GAB-OS-HP.git"
