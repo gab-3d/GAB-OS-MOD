@@ -56,7 +56,7 @@ generateImage() {
 
 
     #create a filename tat start wirh current date and time add gab-os-mod to the end 
-    TARGGET_FILENAME=$(date +"%Y-%m-%d-%H-%M-%S-gab-os-")$SBC
+    TARGGET_FILENAME=$(date +"%Y-%m-%d-%H-%M-gab-os-")$SBC
 
     cd ~/GAB-OS/src/workspace/
     CPU_COUNT=12
