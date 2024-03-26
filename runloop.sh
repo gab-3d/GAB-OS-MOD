@@ -2,8 +2,10 @@
 updateAndInstallPackages() {
     sudo apt update
     sudo apt upgrade --yes
-    sudo apt install --yes aria2 coreutils jq p7zip-full qemu-user-static zip dialog xz xz-utils nodejs
+    sudo apt install --yes aria2 coreutils jq p7zip-full qemu-user-static zip dialog xz xz-utils nodejs gh tmux
     sudo npm install -g n
+
+
 }
 
 # Function to clean the workspace
@@ -107,6 +109,12 @@ compressAndCopyFiles() {
     cp ~/GAB-OS/src/workspace/2023-05-03-raspios-bullseye-arm64-lite.img.xz ~/GAB-OS-MOD/$TARGGET_FILENAME.img.xz
 
     cp ~/GAB-OS/src/build.log ~/GAB-OS-MOD/$TARGGET_FILENAME.log
+
+    # After generating the image, upload it to a GitHub release
+    local image_path=~/GAB-OS-MOD/$TARGGET_FILENAME.img.xz
+    
+    gh release upload $TARGGET_FILENAME.img.xz $image_path --clobber
+
 }
 # Function to get the images to generate
 getImagesToGenerate() {
@@ -135,9 +143,29 @@ generateAllImages() {
     done
 }
 
+createGithubRelease() {
+    cd ~/GAB-OS-MOD/
+    #do login if not already done
+    gh auth login
+
+    # Determine the tag for the new release
+    local latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+    local prefix=${latest_tag%.*}
+    local suffix=${latest_tag##*.}
+    local new_suffix=$((suffix + 1))
+    release_tag="$prefix.$new_suffix"
+
+    # After generating the image, upload it to a GitHub release
+    
+    gh release create $release_tag --title $new_tag $SBC --prerelease --draft
+
+}
+
+
 # Call all functions
 updateAndInstallPackages
 cleanWorkspace
+createGithubRelease
 cloneGABOS
 copyModulesAndConfig
 cloneCustomPiOS
