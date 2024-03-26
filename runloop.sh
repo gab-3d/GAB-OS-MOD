@@ -112,9 +112,9 @@ compressAndCopyFiles() {
 
     # After generating the image, upload it to a GitHub release
     local image_path=~/GAB-OS-MOD/$TARGGET_FILENAME.img.xz
-    
+    cd ~/GAB-OS-MOD/
     gh release upload $TARGGET_FILENAME.img.xz $image_path --clobber
-
+    cd ~/GAB-OS/src/workspace/
 }
 # Function to get the images to generate
 getImagesToGenerate() {
@@ -145,8 +145,11 @@ generateAllImages() {
 
 createGithubRelease() {
     cd ~/GAB-OS-MOD/
-    #do login if not already done
-    gh auth login
+    #check if gh is already logged in
+    gh auth status
+    if [ $? -ne 0 ]; then
+        gh auth login
+    fi
 
     # Determine the tag for the new release
     local latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
@@ -157,7 +160,7 @@ createGithubRelease() {
 
     # After generating the image, upload it to a GitHub release
     
-    gh release create $release_tag --title $new_tag $SBC --prerelease --draft
+    gh release create $release_tag --title $release_tag GAB OS --prerelease --draft
 
 }
 
