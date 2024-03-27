@@ -17,7 +17,7 @@
 [[ -n "$TTYD_REPO_SHIP" ]] || TTYD_REPO_SHIP="https://github.com/tsl0922/ttyd"
 [[ -n "$TTYD_REPO_BRANCH" ]] || TTYD_REPO_BRANCH="main"
 
-[ -n "$TTYD_DEPS" ] || TTYD_DEPS="build-essential cmake git libjson-c-dev libwebsockets-dev git tmux"
+[ -n "$TTYD_DEPS" ] || TTYD_DEPS="build-essential cmake git libjson-c-dev libwebsockets-dev git tmux jq"
 
 TTYD_LOGIN_VAR='
 session_name="gabos3d"
