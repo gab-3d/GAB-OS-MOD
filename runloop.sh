@@ -113,7 +113,7 @@ compressAndCopyFiles() {
     # After generating the image, upload it to a GitHub release
     local image_path=~/GAB-OS-MOD/$TARGGET_FILENAME.img.xz
     cd ~/GAB-OS-MOD/
-    gh release upload $TARGGET_FILENAME.img.xz $image_path --clobber
+    gh release upload $release_tag ~/GAB-OS-MOD/$TARGGET_FILENAME.img.xz --clobber
     cd ~/GAB-OS/src/workspace/
 }
 # Function to get the images to generate
@@ -160,7 +160,7 @@ createGithubRelease() {
 
     # After generating the image, upload it to a GitHub release
     
-    gh release create $release_tag --title $release_tag GAB OS --prerelease --draft
+    gh release create $release_tag --notes "bugfix release"
 
 }
 
