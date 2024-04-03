@@ -101,8 +101,10 @@ generateImage() {
 compressAndCopyFiles() {
     TARGGET_FILENAME=$(date +"%Y-%m-%d-%H-%M-gab-os-")$SBC
 
+
     cd ~/GAB-OS/src/workspace/
     CPU_COUNT=$(grep -c ^processor /proc/cpuinfo)
+    CPU_COUNT=8
     echo -e "\e[32mUsing ${CPU_COUNT} Cores for compression...\e[0m"
     sudo xz -efkvz9T"${CPU_COUNT}" '2023-05-03-raspios-bullseye-arm64-lite.img' || true
 
@@ -112,9 +114,10 @@ compressAndCopyFiles() {
 
     # After generating the image, upload it to a GitHub release
     local image_path=~/GAB-OS-MOD/$TARGGET_FILENAME.img.xz
-    cd ~/GAB-OS-MOD/
-    gh release upload $release_tag ~/GAB-OS-MOD/$TARGGET_FILENAME.img.xz --clobber
-    cd ~/GAB-OS/src/workspace/
+    #cd ~/GAB-OS-MOD/
+    #gh release upload $release_tag ~/GAB-OS-MOD/$TARGGET_FILENAME.img.xz --clobber
+    #cd ~/GAB-OS/src/workspace/
+    #echo -e "\e[32mPress any key to continue...\e[0m"
 }
 # Function to get the images to generate
 getImagesToGenerate() {
@@ -143,32 +146,13 @@ generateAllImages() {
     done
 }
 
-createGithubRelease() {
-    cd ~/GAB-OS-MOD/
-    #check if gh is already logged in
-    gh auth status
-    if [ $? -ne 0 ]; then
-        gh auth login
-    fi
 
-    # Determine the tag for the new release
-    local latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
-    local prefix=${latest_tag%.*}
-    local suffix=${latest_tag##*.}
-    local new_suffix=$((suffix + 1))
-    release_tag="$prefix.$new_suffix"
-
-    # After generating the image, upload it to a GitHub release
-    
-    gh release create $release_tag --notes "bugfix release"
-
-}
 
 
 # Call all functions
 updateAndInstallPackages
 cleanWorkspace
-createGithubRelease
+#createGithubRelease
 cloneGABOS
 copyModulesAndConfig
 cloneCustomPiOS
