@@ -30,9 +30,9 @@ copyModulesAndConfig() {
 cloneCustomPiOS() {
     cd ~
     git clone https://github.com/guysoft/CustomPiOS.git
-    cd CustomPiOS
-    git branch stable 63da54b86ab566c558e9084568d326413f6585d8
-    git switch stable
+    # cd CustomPiOS
+    # git branch stable 63da54b86ab566c558e9084568d326413f6585d8
+    # git switch stable
 }
 
 # Function to generate an image
@@ -94,7 +94,7 @@ generateImage() {
         exit 1
     fi
 
-    compressAndCopyFiles
+    #compressAndCopyFiles
 
 }
 # Function to compress and copy image and log files
@@ -135,13 +135,20 @@ generateAllImages() {
     for image in "${imageToGenerate[@]}"
     do
         generateImage "$image"
-        if [ $? -ne 0 ]; then
-            echo "Build failed"
-            exit 1
-        fi
+        # if [ $? -ne 0 ]; then
+        #     echo "Build failed"
+        #     exit 1
+        # fi
+        
+    #wait user input before proceeding
+        TARGGET_FILENAME=$(date +"%Y-%m-%d-%H-%M-gab-os-")$SBC
+        read -p "Press enter to continue"
+
+        cp  ~/GAB-OS/src/workspace/*.img ~/GAB-OS-MOD/$TARGGET_FILENAME.img
+        cp ~/GAB-OS/src/build.log ~/GAB-OS-MOD/$TARGGET_FILENAME.log
+        
+        read -p "Press enter to continue"
         sudo rm -rf ~/GAB-OS/src/workspace/*
-
-
 
     done
 }

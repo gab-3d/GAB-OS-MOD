@@ -1,5 +1,6 @@
 # C extensions
 *.img
+*.img*
 *.log
 *.xz
 TARGGET_FILENAME

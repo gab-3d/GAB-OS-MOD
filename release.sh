@@ -3,12 +3,7 @@ createGithubRelease() {
     #echo al files that ens with .img.xz
     ls -l *.img.xz
     #ask for confirmaion to proceed
-    read -p "Do you want to create a new release? (y/n) " -n 1 -r
-    #if no exit
-    if [[ ! $REPLY =~ ^[Yy]$ ]]
-    then
-        exit 1
-    fi
+
 
 
     #check if gh is already logged in
@@ -25,8 +20,11 @@ createGithubRelease() {
     release_tag="$prefix.$new_suffix"
 
     #output new release tag
-    echo "Creating release $release_tag"
+    
+    read -e -p "Creating release:" -i $release_tag release_tag
 
+    echo "Creating release $release_tag"
+     
 
     # After generating the image, upload it to a GitHub release
     
@@ -41,5 +39,21 @@ if [ $? -ne 0 ]; then
     echo "gh is not installed. Please install it first"
     exit 1
 fi
+#delete all file ending with .img--
+rm -f ~/GAB-OS-MOD/*.img--
+#loop all the files in the folder ending with .img
+for f in ~/GAB-OS-MOD/*.img; do
+    #compress the file
+    xz -efkvz9T10 $f || true
+    #rename uncompressed file to .img--
+    mv $f $f--
+
+done
+
+
+
+
+
 createGithubRelease
+
 
